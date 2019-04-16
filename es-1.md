@@ -120,10 +120,12 @@ curl -XPUT localhost:9200/_cluster/settings -d '{
 
 10. 跨域配置：
 
+```
   http.cors.enabled: true
   http.cors.allow-origin: "*"
   http.cors.allow-methods: OPTIONS, HEAD, GET, POST
   http.cors.allow-headers: X-Requested-With, Content-Type, Content-Length, X-Auth-Token
+```
 
 11.节点发生异常
 
