@@ -37,11 +37,11 @@ ES集群的维护过程中，我们先了解下ES数据恢复的流程，ES在�
 
        6.等待health变为green，打开hangout写数据。 
 
-4.  rebalance和recovery条件限制
+4.  rebalance和recovery条件限制:
 
     1.有的时候我们发生故障重启了集群，但是集群中节点的加入是有时间的先后顺序，那么很有可能数据直接开始recovery，但是这个时候数据并不完整，节点之间很有可能
        已经开始进行网络恢复，然后导致的是数据分布不均匀，再出发rebalance导致数据一致漂移，造成没有意义的网络和磁盘I/O。
-       那么对应这种情况，我们需要调整recovery的相关参数和rebalance的相关参数来限制一下recovery和rebalance的条件，比如gateway的设置：
+       那么对应这种情况，我们需要调整recovery的相关参数和rebalance的相关参数来限制一下recovery和rebalance的条件，比如gateway的设置:
           gateway.expected_nodes
           gateway.expected_master_nodes
           gateway.expected_data_nodes
@@ -55,7 +55,7 @@ ES集群的维护过程中，我们先了解下ES数据恢复的流程，ES在�
           index.unassigned.node_left.delayed_timeout: 5m
        等待5分钟后再开始进行recovery。
 
-    3.限制的一些具体参数可以参考如下配置，比如恢复速率和并发数等等：
+    3.限制的一些具体参数可以参考如下配置，比如恢复速率和并发数等等:
          "transient" : {
              "indices.recovery.max_bytes_per_sec" : "500mb",
              "indices.recovery.concurrent_streams" : "20",
@@ -67,7 +67,7 @@ ES集群的维护过程中，我们先了解下ES数据恢复的流程，ES在�
         }
 5.写入的优化
 
-  目前我们所做的写入优化主要是针对translog进行的一些优化，具体的配置参数可以参考如下：
+  目前我们所做的写入优化主要是针对translog进行的一些优化，具体的配置参数可以参考如下:
      "translog": {  "interval": "30s",  "flush_threshold_size": "3g",  "durability": "async",  "sync_interval": "30s" }    
 主要是换成异步写入，并且增大flush的大小和间隔时间。因为本身日志是可丢的，异步存在丢失日志的风险，这个觉得是可以接受的。
 
@@ -80,7 +80,7 @@ ES集群的维护过程中，我们先了解下ES数据恢复的流程，ES在�
 
 7.发现discovery
 
-  由于在某些负载较高的情况下，data节点很有可能直接脱离集群，那么建议提高discovery的检测时间，降低这种风险，主要配置可以参考：
+  由于在某些负载较高的情况下，data节点很有可能直接脱离集群，那么建议提高discovery的检测时间，降低这种风险，主要配置可以参考:
     discovery.zen.fd.ping_timeout: 120s
     discovery.zen.fd.ping_retries: 6
     discovery.zen.fd.ping_interval: 30s
@@ -96,7 +96,7 @@ java -cp lucene-core-5.5.0.jar -ea:org.apache.lucene… org.apache.lucene.index.
 是不可接受的。所以我们的建议是在物理集群中每10台机器打上一个tag划分成一个逻辑集群，然后再进行创建索引的过程中，通过allocation的
 include将这个索引限制在这个逻辑集群当中，比如可以如果我们有200个索引，40台机器，我们可以将前20个最大的索引include到10台机器中，
 将60个索引include到10台机器中。依次类推，只要保证每个逻辑集群中的总index的大小差异不是很大，限制住了索引的漂移，降低recovery和
-rebalance的成本，部分配置可以参考：
+rebalance的成本，部分配置可以参考:
     curl -XPUT localhost:9200/test/_settings -d '{
         "index.routing.allocation.include.tag" : "value1,value2"
     }'
