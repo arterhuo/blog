@@ -1,8 +1,8 @@
 # arterhuo blog
 **kafka**
-  - [kafka跨机房扩容迁移方案](https://github.com/arterhuo/blog/blob/master/kafka-1.md)
-  - [kafka不停机，迁移zookeeper到新集群](https://github.com/arterhuo/blog/blob/master/kafka-2.md)
+  - [kafka跨机房扩容迁移方案](https://github.com/arterhuo/blog/issues/2)
+  - [kafka不停机，迁移zookeeper到新集群](https://github.com/arterhuo/blog/issues/3)
 
 **elasticsearch**
-  - [es使用经验](https://github.com/arterhuo/blog/wiki/es%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C)
+  - [es使用经验](https://github.com/arterhuo/blog/issues/1)
 
