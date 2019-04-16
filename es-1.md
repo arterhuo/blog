@@ -115,8 +115,8 @@ rebalance的成本，部分配置可以参考:
     curl -XPUT localhost:9200/_cluster/settings -d '{
       "transient" : {
       "cluster.routing.allocation.exclude._ip" : "10.0.0.1"
-   }
-   }'
+        }
+    }'
 
 10. 跨域配置：
 
