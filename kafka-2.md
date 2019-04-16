@@ -44,4 +44,4 @@ server.5=10.30.197.149:2888:3888
 
 
 总结：
-       在不中断业务的情况下，kafka的zk迁移到新zk集群，保证老zk集群不能下架，还是很棘手的操作。为了降低中断时间最少，此方案测试过程中是zk短时间不可用，但kafka集群一直处于正常工作状态。网上有类似的案例： [不停止kafka，迁移zk]:(https://www.infoq.cn/article/GipwOzCYSiOH-cD5cfy6)，仔细阅读此案例，依然会有短暂的新zk集群不可用的状态
+       在不中断业务的情况下，kafka的zk迁移到新zk集群，保证老zk集群不能下架，还是很棘手的操作。为了降低中断时间最少，此方案测试过程中是zk短时间不可用，但kafka集群一直处于正常工作状态。网上有类似的案例： [不停止kafka，迁移zk](https://www.infoq.cn/article/GipwOzCYSiOH-cD5cfy6)，仔细阅读此案例，依然会有短暂的新zk集群不可用的状态
