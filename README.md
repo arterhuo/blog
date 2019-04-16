@@ -4,5 +4,5 @@
   - [kafka不停机，迁移zookeeper到新集群](https://github.com/arterhuo/blog/blob/master/kafka-2.md)
 
 **elasticsearch**
-  - [es使用经验](https://github.com/arterhuo/blog/blob/master/es-1.md)
+  - [es使用经验](https://github.com/arterhuo/blog/wiki/es%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C)
 
