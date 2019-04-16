@@ -112,7 +112,7 @@ rebalance的成本，部分配置可以参考:
         "index.routing.allocation.include.group2" : "yyy",
         "index.routing.allocation.exclude.group3" : "zzz",
     }'
-curl -XPUT localhost:9200/_cluster/settings -d '{
+    curl -XPUT localhost:9200/_cluster/settings -d '{
       "transient" : {
       "cluster.routing.allocation.exclude._ip" : "10.0.0.1"
    }
