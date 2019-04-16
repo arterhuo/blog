@@ -3,7 +3,7 @@
  - 两个机房网络必须全部打通
  - zookeeper需要迁移，考虑网络导致脑裂问题，业务迁移完成之后再进行zk迁移（可提前加入readonly到新机房）
 
-1、topics.txt添加要迁移的topic
+1、topics.txt添加要迁移的topic 
 
 2、生成topics-to-move.json
 ```#!/usr/bin/env python
