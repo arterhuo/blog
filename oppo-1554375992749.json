@@ -1,0 +1,1319 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 62,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 5,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sort_desc(sum(rate(container_cpu_user_seconds_total{image!=\"\", container_label_cc_bdp_lain_deployd_pg_namespace=\"oppo\",name=~\"oppo.worker.*\"}[1m])) by (name))",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "{{name}}",
+          "refId": "A",
+          "step": 240,
+          "target": ""
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "CPU Usage",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percentunit",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 7,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sort_desc(sum(container_memory_usage_bytes{image!=\"\",  container_label_cc_bdp_lain_deployd_pg_namespace=\"oppo\",name=~\"oppo.worker.*\"}) by (name))",
+          "interval": "5s",
+          "intervalFactor": 2,
+          "legendFormat": "{{name}}",
+          "refId": "A",
+          "step": 10,
+          "target": ""
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Memory Usage",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "fill": 1,
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 0,
+        "y": 7
+      },
+      "id": 1,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "hide": true,
+          "refId": "A",
+          "target": "scaleToSeconds(statsd.oppo.no-order-try-trigger.consume.record.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "E",
+          "target": "scaleToSeconds(statsd.oppo.inquiry-tailing-trigger.consume.record.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "F",
+          "target": "scaleToSeconds(statsd.oppo.proposed-dialogue-trigger.consume.record.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "B",
+          "target": "scaleToSeconds(statsd.oppo.marketing-inquiry-retrieve-trigger.consume.record.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "C",
+          "target": "scaleToSeconds(statsd.oppo.marketing-service-report-trigger.consume.record.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "D",
+          "target": "aliasByNode(scaleToSeconds(statsd.oppo.*trigger.consume.record.count.count, 1), 2)"
+        },
+        {
+          "hide": false,
+          "refId": "G",
+          "target": "aliasByNode(scaleToSeconds(statsd.oppo-marketing-avenue.*trigger.consume.record.count.count, 1), 2)"
+        },
+        {
+          "hide": false,
+          "refId": "H",
+          "target": "aliasByNode(scaleToSeconds(statsd.oppo-recommendation-*.*trigger.consume.record.count.count, 1), 2)"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "consume",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "fill": 1,
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 7
+      },
+      "id": 12,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "refId": "D",
+          "target": "scaleToSeconds(statsd.oppo.service-report-trigger.consume.record.count.count, 1)"
+        },
+        {
+          "refId": "E",
+          "target": "scaleToSeconds(statsd.oppo.service-report-trigger.parse.event.failed.miss.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "F",
+          "target": "scaleToSeconds(statsd.oppo.marketing-service-report-trigger.runner.process.failed.count, 1)"
+        },
+        {
+          "refId": "A",
+          "target": "scaleToSeconds(statsd.oppo.service-report-trigger.unneeded.handle.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "B",
+          "target": "scaleToSeconds(statsd.oppo.marketing-service-report-trigger.trigger.delay.count.count, 1)"
+        },
+        {
+          "refId": "C",
+          "target": "scaleToSeconds(statsd.oppo.service-report-trigger.schedule.delay.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "H",
+          "target": "scaleToSeconds(statsd.oppo.marketing-service-report-action.delay.job.failed.count.count, 1)"
+        },
+        {
+          "refId": "I",
+          "target": "scaleToSeconds(statsd.oppo.service-report-action.task.executed.count.count, 1)"
+        },
+        {
+          "refId": "G",
+          "target": "scaleToSeconds(statsd.oppo.service-report-action.produce.record.count.count, 1)"
+        },
+        {
+          "refId": "J",
+          "target": "scaleToSeconds(statsd.oppo.service-report-trigger.schedule.select metric, 1)"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Marketing-ServiceReport pipeline",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "fill": 1,
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 0,
+        "y": 12
+      },
+      "id": 2,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "hide": true,
+          "refId": "F",
+          "target": "scaleToSeconds(statsd.oppo.inquiry-tailing-trigger.trigger.delay.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "G",
+          "target": "scaleToSeconds(statsd.oppo.no-order-try-trigger.trigger.delay.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "D",
+          "target": "scaleToSeconds(statsd.oppo.marketing-inquiry-retrieve-trigger.trigger.delay.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "B",
+          "target": "scaleToSeconds(statsd.oppo.inquiry-tailing-trigger.schedule.delay.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "A",
+          "target": "scaleToSeconds(statsd.oppo.no-order-try-trigger.schedule.delay.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "C",
+          "target": "scaleToSeconds(statsd.oppo.marketing-inquiry-retrieve-trigger.schedule.delay.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "E",
+          "target": "aliasByNode(scaleToSeconds(statsd.oppo.*-trigger.trigger.delay.count.count, 1), 2)"
+        },
+        {
+          "refId": "H",
+          "target": "aliasByNode(scaleToSeconds(statsd.oppo-marketing-avenue.*-trigger.trigger.delay.count.count, 1), 2)",
+          "textEditor": false
+        },
+        {
+          "refId": "I",
+          "target": "aliasByNode(scaleToSeconds(statsd.oppo-recommendation-avenue.*-trigger.trigger.delay.count.count, 1), 2)",
+          "textEditor": false
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "trigger/schedule delay count",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "fill": 1,
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 6,
+        "y": 12
+      },
+      "id": 3,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "B",
+          "target": "scaleToSeconds(statsd.oppo.inquiry-tailing-action.produce.record.count.count, 1)",
+          "textEditor": false
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "A",
+          "target": "scaleToSeconds(statsd.oppo.no-order-try-action.produce.record.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "C",
+          "target": "scaleToSeconds(statsd.oppo.inquiry-tailing-action.task.executed.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "D",
+          "target": "scaleToSeconds(statsd.oppo.no-order-try-action.task.executed.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "E",
+          "target": "scaleToSeconds(statsd.oppo.marketing-inquiry-retrieve-action.produce.record.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "F",
+          "target": "scaleToSeconds(statsd.oppo.marketing-inquiry-retrieve-action.task.executed.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "G",
+          "target": "scaleToSeconds(statsd.oppo.marketing-service-report-action.produce.record.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "H",
+          "target": "aliasByNode(scaleToSeconds(statsd.oppo.*action.produce.record.count.count, 1), 2, 3, 4)"
+        },
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "I",
+          "target": "aliasByNode(scaleToSeconds(statsd.oppo-marketing-avenue.*action.produce.record.count.count, 1), 2, 3, 4)"
+        },
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "J",
+          "target": "aliasByNode(scaleToSeconds(statsd.oppo-recommendation-avenue.*action.produce.record.count.count, 1), 2, 3, 4)"
+        },
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "K",
+          "target": "aliasByNode(scaleToSeconds(statsd.oppo-recommendation-trade.*action.produce.record.count.count, 1), 2, 3, 4)"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "produce/taskExecute count",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "fill": 1,
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 18,
+        "y": 12
+      },
+      "id": 10,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "hide": true,
+          "refId": "A",
+          "target": "scaleToSeconds(statsd.oppo.inquiry-tailing-trigger.rate.limit.drop.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "B",
+          "target": "scaleToSeconds(statsd.oppo.no-order-try-trigger.rate.limit.drop.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "C",
+          "target": "scaleToSeconds(statsd.oppo.marketing-inquiry-retrieve-trigger.rate.limit.drop.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "D",
+          "target": "statsd.oppo.propose-dialogue-trigger.rate.limit.drop.count.scaleToSeconds(1).select metric"
+        },
+        {
+          "refId": "E",
+          "target": "aliasByNode(scaleToSeconds(statsd.oppo.*trigger.rate.limit.drop.count, 1), 2)"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "rate limit drop",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 0,
+        "y": 18
+      },
+      "id": 11,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "hide": true,
+          "refId": "A",
+          "target": "scaleToSeconds(statsd.oppo.inquiry-tailing-action.delay.job.failed.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "B",
+          "target": "scaleToSeconds(statsd.oppo.no-order-try-action.delay.job.failed.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "C",
+          "target": "scaleToSeconds(statsd.oppo.marketing-inquiry-retrieve-action.delay.job.failed.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "D",
+          "target": "scaleToSeconds(statsd.oppo.marketing-service-report-action.delay.job.failed.count.count, 1)"
+        },
+        {
+          "refId": "E",
+          "target": "aliasByNode(scaleToSeconds(statsd.oppo.*action.delay.job.failed.count.count, 1), 2)"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "job failed",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 6,
+        "y": 18
+      },
+      "id": 13,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "hide": true,
+          "refId": "A",
+          "target": "scaleToSeconds(statsd.oppo.inquiry-tailing-action.redis.miss.data.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "B",
+          "target": "scaleToSeconds(statsd.oppo.marketing-inquiry-retrieve-action.redis.miss.data.count.count, 1)"
+        },
+        {
+          "hide": true,
+          "refId": "C",
+          "target": "scaleToSeconds(statsd.oppo.marketing-service-report-action.redis.miss.data.count.count, 1)"
+        },
+        {
+          "refId": "D",
+          "target": "aliasByNode(scaleToSeconds(statsd.oppo.*action.redis.*.*.count.count, 1), 2, 4, 5, 6)"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Redis",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 18
+      },
+      "id": 9,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "refId": "A",
+          "target": "scaleToSeconds(statsd.oppo.inquiry-tailing-trigger.rate.limit.after.count, 1)"
+        },
+        {
+          "refId": "B",
+          "target": "scaleToSeconds(statsd.oppo.no-order-try-trigger.rate.limit.after.count, 1)"
+        },
+        {
+          "refId": "C",
+          "target": "scaleToSeconds(statsd.oppo.marketing-inquiry-retrieve-trigger.rate.limit.after.count, 1)"
+        },
+        {
+          "refId": "D",
+          "target": "scaleToSeconds(statsd.oppo.proposed-dialogue-trigger.rate.limit.after.count, 1)"
+        },
+        {
+          "refId": "E",
+          "target": "scaleToSeconds(statsd.oppo.marketing-service-report-trigger.rate.limit.after.count, 1)"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "rate limit after",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 25
+      },
+      "id": 4,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "refId": "A",
+          "target": "scaleToSeconds(statsd.oppo.no-order-try-action.grpc.client.trade.TradeService_GetRecentTrades.request.count.count, 1)"
+        },
+        {
+          "refId": "D",
+          "target": "statsd.oppo.no-order-try-action.grpc.client.trade.TradeService_GetRecentTrades.request.error_count.count"
+        },
+        {
+          "refId": "B",
+          "target": "scaleToSeconds(statsd.oppo.inquiry-tailing-action.grpc.client.trade.TradeService_GetRecentTrades.request.count.count, 1)"
+        },
+        {
+          "refId": "C",
+          "target": "statsd.oppo.inquiry-tailing-action.grpc.client.trade.TradeService_GetRecentTrades.request.error_count.count"
+        },
+        {
+          "refId": "E",
+          "target": "scaleToSeconds(statsd.oppo.marketing-inquiry-retrieve-action.grpc.client.trade.TradeService_GetRecentTrades.request.count.count, 1)"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "grpc",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "graphite",
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 25
+      },
+      "id": 8,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "refId": "A",
+          "target": "statsd.oppo.inquiry-tailing-action.grpc.client.trade.TradeService_GetRecentTrades.request_time.mean"
+        },
+        {
+          "refId": "B",
+          "target": "statsd.oppo.no-order-try-action.grpc.client.trade.TradeService_GetRecentTrades.request_time.mean"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "grpc time",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 16,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "oppo",
+  "uid": "000000062",
+  "version": 290
+}
